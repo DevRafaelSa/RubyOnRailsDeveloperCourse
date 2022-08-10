@@ -67,7 +67,7 @@ else
   puts "this evaluates to false"
 end
 puts "la la la"
-=end
+
 
 #Arrays
 #p a.methods #para ver todos os metodos disponiveis
@@ -92,3 +92,52 @@ myhash [:e] = "Rafael"
 
 myhash.each { |some_key, some_value| puts "The key is #{some_key} and the value is #{some_value}" }
 myhash.select { |k, v| v.is_a?(String)}
+
+
+Estilo em Ruby
+
+métodos e atributos de variáveis são escritos com snake_case. Ex.: this_is_snake_case OU also_snake_case (com underlines separando palavras de modo que fiquem mais descritivas)
+
+def my_name_is
+  # and my code is here
+end
+
+Identação em Ruby são dois espaços, e nao 4 como nas outras linguagens;
+
+Para o caso de nomes de classes usamos CamelCase, onde as palavras sao juntas e a primeira é maiúscula
+Ex: ApplicationController
+class SomeClass
+  cod here
+end
+
+Ruby Style Guide com dicas: https://github.com/airbnb/ruby
+=end
+
+#Estudo de Orientação a Objetos com Ruby
+
+class Student
+  attr_accessor :first_name, :last_name, :email, :username, :password #attr_accessor ja implica os getters e setters
+
+  #agora eh preciso inicializar os atributos e linkar com as variaveis dentro do bloco
+  def initialize(firstname, lastname, username, email, password)
+    @first_name = firstname
+    @last_name = lastname
+    @username = username
+    @email = email
+    @password = password
+  end
+
+  #definino um metodo de exibicao dos atributo
+  def to_s
+    "Fisrt name: #{@first_name}, Last name: #{@last_name}, Username: #{@username}, email address: #{@email}"
+  end
+end
+
+rafael = Student.new("Rafael", "Sá", "rafael", "rafael@exemplo.com", "senha1")
+rafaela = Student.new("Rafaela", "Santos", "rafaela", "rafaela@exemplo.com", "senha2")
+
+puts rafael
+puts rafaela
+rafael.last_name = rafaela.last_name
+puts "Rafael foi alterado"
+puts rafael
